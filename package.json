@@ -1,0 +1,26 @@
+{
+  "name": "property-maper",
+  "version": "0.0.1",
+  "description": "Module in JavaScript for map object's properties to string key's properties as values",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/jshint/bin/jshint app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CILP/PropertyMaper.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "JavaScript"
+  ],
+  "author": "Carlos Linares",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CILP/PropertyMaper/issues"
+  },
+  "homepage": "https://github.com/CILP/PropertyMaper#readme",
+  "devDependencies": {
+    "jshint": "^2.9.3"
+  }
+}
