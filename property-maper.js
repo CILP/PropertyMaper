@@ -1,13 +1,12 @@
 function PropertyMaper(map, scope){
 
-  var _map = map || "{\"DatosGenerales\": {\"Nombre\": \"data.nombre\"}, \"value\":25, \"test\":\"data.nombre\"}",
-      _scope = scope || { data: {nombre: 'Alfredo'}},
+  //var _map = map || "{\"DatosGenerales\": {\"Nombre\": \"data.nombre\"}, \"value\":25, \"test\":\"data.nombre\"}",
+  var _map = map || "",
       parse = JSON.parse(_map);
 
-  this.scope = _scope;
-  console.log("Before: " + JSON.stringify(parse) + "\n");
+  this.scope = scope;
   this.propertySearch(parse);
-  console.log("After: " + JSON.stringify(parse) + "\n");
+  return parse;
 }
 
 // Funcion recursiva que busca propiedades string
