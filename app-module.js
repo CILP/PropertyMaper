@@ -1,6 +1,7 @@
-var propertyMaper = require('./property-maper.js');
+var propMaperModule = require('./property-maper-module.js');
 
-var mapProperties = new propertyMaper(
+console.time('Execution-Time');
+var pm = propMaperModule.map(
   JSON.stringify({
     "name":"data.person.name",
     "last_name":"data.person.last_name",
@@ -22,5 +23,6 @@ var mapProperties = new propertyMaper(
     }
   }
 );
+console.timeEnd('Execution-Time');
 
-console.log(mapProperties);
+console.log(pm);

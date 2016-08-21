@@ -4,8 +4,7 @@
   "description": "Module in JavaScript for map object's properties to string key's properties as values",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha && ./node_modules/jshint/bin/jshint app.js",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "test": "./node_modules/jshint/bin/jshint app.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +21,7 @@
   },
   "homepage": "https://github.com/CILP/PropertyMaper#readme",
   "devDependencies": {
-    "coveralls": "^2.11.12",
+    "chai": "^3.5.0",
     "istanbul": "^0.4.4",
     "jshint": "^2.9.3",
     "mocha": "^3.0.2"
