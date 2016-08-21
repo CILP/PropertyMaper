@@ -4,7 +4,7 @@
   "description": "Module in JavaScript for map object's properties to string key's properties as values",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint app.js"
+    "test": "./node_modules/jshint/bin/jshint property-maper.js && ./node_modules/jshint/bin/jshint example.js"
   },
   "repository": {
     "type": "git",

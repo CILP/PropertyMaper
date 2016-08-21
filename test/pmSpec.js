@@ -1,5 +1,5 @@
 var expect = require('chai').expect,
-    propertyMaper = require('../property-maper-module.js');
+    propertyMaper = require('../property-maper.js');
 
 describe('Mapping', function(){
 
