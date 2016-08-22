@@ -1,0 +1,9 @@
+# Ignore test/
+test
+
+# Ignore coverage
+coverage
+
+# Ignore gulpfile, .travis.yml
+gulpfile.js
+.travis.yml
