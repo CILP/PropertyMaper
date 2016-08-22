@@ -2,27 +2,8 @@ var propMaperModule = require('./property-maper.js');
 
 console.time('Execution-Time');
 var pm = propMaperModule.map(
-  JSON.stringify({
-    "name":"data.person.name",
-    "last_name":"data.person.last_name",
-    "addres":"data.person.addres",
-    "hobbies":"data.person.hobbies",
-    "others":"data.others.other"
-  }),
-  {
-    "data": {
-      "person": {
-        "name":"Carlos",
-        "last_name":"Linares",
-        "addres":"Guadalajara",
-        "hobbies":"Play Guitar, Video Games"
-      },
-      "others": {
-        "other": "Other things, etc."
-      }
-    }
-  }
+  "{DatosGenerales: {Nombre: data.nombre}, list: Algo, otro: {some: 12}, a: Loro, c: [1,2,3], d: [{area:basexaltura, perimetro: 45}]}",
+  {data: {nombre: "Carlos"}}
 );
 console.timeEnd('Execution-Time');
-
 console.log(pm);

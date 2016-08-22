@@ -36,11 +36,7 @@ describe('Mapping', function(){
 
   it('return test case successfully', function(){
     var pm = propertyMaper.map(
-      JSON.stringify({
-        DatosGenerales: {
-          Nombre: "data.nombre",
-        }
-      }),
+      "{DatosGenerales: { Nombre: data.nombre }}",
       {
         data: {
           nombre: "Alfredo",
@@ -63,31 +59,108 @@ describe('Mapping', function(){
     expect(pm.DatosGenerales.Nombre).to.equal("data.nombre");
   });
 
+  it('test case for extra properties in map parameter', function(){
+    var pm = propertyMaper.map(
+      JSON.stringify({
+        DatosGenerales: {
+          Nombre: "data.nombre",
+          Edad: "data.edad"
+        }
+      }),
+      {
+        data: {
+          nombre: "Alfredo"
+        }
+      }
+    );
+
+    expect(pm.DatosGenerales.Nombre).to.equal("Alfredo");
+    expect(pm.DatosGenerales.Edad).to.equal("data.edad");
+  });
+
+  it('test case for no found property in scope parameter', function(){
+    var pm = propertyMaper.map(
+      JSON.stringify({
+        DatosGenerales: {
+          Nombre: "data.nombre",
+        }
+      }), {data: {edad: 22}}
+    );
+
+    expect(pm.DatosGenerales.Nombre).to.equal("data.nombre");
+  });
+
+  it('test case for non valid json map parameter (Simple JSON)', function(){
+    var pm = propertyMaper.map(
+      "{DatosGenerales: {Nombre: data.nombre}}",
+      {data: {nombre: "Carlos"}}
+    );
+
+    expect(pm.DatosGenerales.Nombre).to.equal("Carlos");
+  });
+
+  it('test case for non valid json map parameter (Complex JSON)', function(){
+    var pm = propertyMaper.map(
+      "{ DatosGenerales: {Nombre: data.nombre}, list: Algo, otro: {some: 12}, a: Loro, c: [1,2,3], d: [{area:basexaltura, perimetro: 45}]}",
+      {data: {nombre: "Carlos"}}
+    );
+
+    expect(pm.DatosGenerales.Nombre).to.equal("Carlos");
+  });
+
   it('test case for null map parameter', function(){
 
     expect(function(){
       propertyMaper.map(null, {data: {name: 'Alfredo'}});
-    }).to.throw("mapScope(): expected map parameter");
+    }).to.throw("map(): expected first parameter as string");
   });
 
   it('test case for non-string map parameter', function(){
 
     expect(function(){
       propertyMaper.map({}, {data: {name: 'Alfredo'}});
-    }).to.throw("mapScope(): expected map parameter as string");
+    }).to.throw("map(): expected first parameter as string");
   });
 
-  it('test case for null scope parameter', function(){
+  it('test case for non-valid-string map parameter 1th', function(){
 
     expect(function(){
       propertyMaper.map("", null);
-    }).to.throw("mapScope(): expected scope parameter");
+    }).to.throw("map(): expected first parameter as string");
   });
 
-  it('test case for non-object map parameter', function(){
+  it('test case for non-valid-string map parameter 2nd', function(){
+
+    expect(function(){
+      propertyMaper.map("Hola Mundo!", {});
+    }).to.throw("searchAndReplace(): expected first parameter has a valid json structure");
+  });
+
+  it('test case for non-valid-string map parameter 3rd', function(){
+
+    expect(function(){
+      propertyMaper.map("{DatosGenerales: {hola: data.saludo", {});
+    }).to.throw("searchAndReplace(): expected first parameter has a valid json structure");
+  });
+
+  it('test case for non-valid-string map parameter 4th', function(){
 
     expect(function(){
       propertyMaper.map("", 25);
-    }).to.throw("mapScope(): expected scope parameter as object");
+    }).to.throw("map(): expected first parameter as string");
+  });
+
+  it('test case for non-valid scope parameter', function(){
+
+    expect(function(){
+      propertyMaper.map("{}", null);
+    }).to.throw("map(): expected second parameter as object");
+  });
+
+  it('test case for non-valid scope parameter', function(){
+
+    expect(function(){
+      propertyMaper.map("{}", 25);
+    }).to.throw("map(): expected second parameter as object");
   });
 });
