@@ -1,6 +1,6 @@
 {
   "name": "property-maper",
-  "version": "0.0.3",
+  "version": "0.0.8",
   "description": "Module in JavaScript for map object's properties to string key's properties as values",
   "main": "app.js",
   "repository": {
